@@ -7,7 +7,7 @@ def create_user(
         email: str = "",
         first_name: str = "",
         last_name: str = "",
-) -> type[User]:
+) -> User:
     user = User(
         username=username,
         email=email,
@@ -17,7 +17,7 @@ def create_user(
     user.set_password(password)
     user.save()
 
-    return User
+    return user
 
 
 def get_user(user_id: int) -> User:

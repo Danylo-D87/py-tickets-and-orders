@@ -2,8 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
-
-import settings
+from django.conf import settings
 
 
 class Genre(models.Model):
@@ -78,12 +77,12 @@ class Order(models.Model):
 
 class Ticket(models.Model):
     order = models.ForeignKey(
-        Order, on_delete=models.CASCADE, related_name="orders"
+        Order, on_delete=models.CASCADE, related_name="tickets"
     )
     movie_session = models.ForeignKey(
         to=MovieSession,
         on_delete=models.CASCADE,
-        related_name="movie_sessions"
+        related_name="tickets"
     )
     row = models.IntegerField()
     seat = models.IntegerField()
